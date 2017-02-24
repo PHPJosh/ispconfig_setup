@@ -17,9 +17,7 @@ InstallSQLServer() {
     echo -n "Installing Percona MySQL... "
     echo "percona-server-server-5.7 percona-server-server/root_password password $CFG_MYSQL_ROOT_PWD" | debconf-set-selections
     echo "percona-server-server-5.7 percona-server-server/root_password_again password $CFG_MYSQL_ROOT_PWD" | debconf-set-selections
-    wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb > /dev/null
-    dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb > /dev/null
-    apt-get update > /dev/null
+    wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb && dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb && apt-get update > /dev/null
     apt-get -yqq install percona-server-client-5.7 percona-server-server-5.7 > /dev/null 2>&1
     sed -i 's/bind-address		= 127.0.0.1/#bind-address		= 127.0.0.1/' /etc/mysql/percona-server.conf.d/mysqld.cnf
 	echo "sql-mode=\"NO_ENGINE_SUBSTITUTION\"" >> /etc/mysql/percona-server.conf.d/mysqld.cnf
