@@ -8,7 +8,7 @@ AskQuestions() {
 	  
 	  while [ "x$CFG_SQLSERVER" == "x" ]
           do
-                CFG_SQLSERVER=$(whiptail --title "SQLSERVER" --backtitle "$WT_BACKTITLE" --nocancel --radiolist "Select SQL Server type" 10 50 3 "MySQL" "(default)" ON "MariaDB" "" OFF "Percona Mysql" "Must have Percona repo enabled" OFF 3>&1 1>&2 2>&3)
+                CFG_SQLSERVER=$(whiptail --title "SQLSERVER" --backtitle "$WT_BACKTITLE" --nocancel --radiolist "Select SQL Server type" 10 50 3 "MySQL" "(default)" ON "MariaDB" "" OFF "Percona Mysql" "Percona repo will be enabled" OFF 3>&1 1>&2 2>&3)
           done
 		  
 	  while [ "x$CFG_MYSQL_ROOT_PWD" == "x" ]
